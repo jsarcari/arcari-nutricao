@@ -15,4 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/pacientes', 'PacienteController@index');
+Route::resource('/pacientes', 'PacienteController');
+Route::resource('/consultas', 'ConsultaController');
