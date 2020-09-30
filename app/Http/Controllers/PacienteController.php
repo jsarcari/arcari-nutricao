@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 class PacienteController extends Controller
 {
+    private $pacientes = [
+        ['id'=>1, 'nome'=>'Juan']
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +16,8 @@ class PacienteController extends Controller
      */
     public function index()
     {
-        echo "<h1>Pacientes</h1>";
+        $pacientes = $this->pacientes;
+        return view('pacientes.index', compact(['pacientes']));
     }
 
     /**
