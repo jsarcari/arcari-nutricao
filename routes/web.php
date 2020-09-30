@@ -15,4 +15,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/pacientes', 'Paciente@listarPacientes');
+Route::get('/pacientes', 'PacienteController@listarPacientes');
