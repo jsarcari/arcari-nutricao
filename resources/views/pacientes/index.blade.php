@@ -3,14 +3,11 @@
 @section('titulo','Pacientes')
 @section('conteudo')
     <section class="container">
-        <div id="top" class="row">
-            <div class="col-md-12">
-                <h2>Pacientes</h2>
-                <label for="filtrar-tabela">Pesquisar:</label>
-                <input type="text" name="filtro" id="filtrar-tabela" placeholder="Nome do paciente">
-                <a href="{{ route ('pacientes.create')}}" class="btn btn-primary pull-right h2" style="margin-bottom:4px; margin-top: 2px;">Novo paciente</a>
-            </div>
-        </div> <!-- /#top -->
+        @component('components.top',['titulo'=>'Pacientes'])
+        <label for="filtrar-tabela">Pesquisar:</label>
+        <input type="text" name="filtro" id="filtrar-tabela" placeholder="Nome do paciente">
+        <a href="{{ route ('pacientes.create')}}" class="btn btn-primary pull-right h2" style="margin-bottom:4px; margin-top: 2px;">Novo paciente</a>
+        @endcomponent
         <table>
             <thead>
                 <tr>
