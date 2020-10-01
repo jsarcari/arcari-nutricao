@@ -4,7 +4,7 @@
 @section('conteudo')
     @component('components.top',['titulo'=>'Novo paciente'])
     @endcomponent
-    <form>
+    <form action="/pacientes" method="POST">
         <div class="form-group row">
         <label for="nomePaciente" class="col-sm-2 col-form-label">Nome</label>
         <div class="col-sm-10">
