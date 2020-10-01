@@ -10,7 +10,7 @@ body{
 header{
 	background-color: #333;
 	height: 3em;
-	color: #FFF;
+    color: #FFF;
 	margin-bottom: 1em;
 }
 
@@ -33,18 +33,18 @@ header .container:before{
 }
 
 .container{
-	width: 60%;
-	height: 100%;
-	margin: 0 auto;
+	width: 70%;
+    height: 100%;
+    margin: 0 auto;
 }
 
-section{
-	margin: 2em 0;
+.principal{
+    width: 70%;
+    margin: 0 auto;
 	overflow: hidden;
 }
 
-section h2{
-	font-size: 3em;
+.principal h2{
 	display: block;
 	padding-bottom: .5em;
 	border-bottom: 1px solid #ccc;

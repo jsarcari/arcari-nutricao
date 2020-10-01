@@ -2,7 +2,6 @@
 
 @section('titulo','Pacientes')
 @section('conteudo')
-    <section class="container">
         @component('components.top',['titulo'=>'Pacientes'])
         <label for="filtrar-tabela">Pesquisar:</label>
         <input type="text" name="filtro" id="filtrar-tabela" placeholder="Nome do paciente">
@@ -47,6 +46,5 @@
 
             </tbody>
         </table>
-    </section>
 	<script type="text/javascript" src="{{ asset('js/filtro.js') }}"></script>
 @endsection
