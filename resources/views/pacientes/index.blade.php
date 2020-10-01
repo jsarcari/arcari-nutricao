@@ -1,15 +1,16 @@
 @extends('layouts.principal')
 
+@section('titulo','Pacientes')
 @section('conteudo')
-<section class="container">
-    <div id="top" class="row">
-        <div class="col-md-12">
-            <h2>Pacientes</h2>
-            <label for="filtrar-tabela">Pesquisar:</label>
-            <input type="text" name="filtro" id="filtrar-tabela" placeholder="Nome do paciente">
-            <a href="{{ route ('pacientes.create')}}" class="btn btn-primary pull-right h2" style="margin-bottom:4px; margin-top: 2px;">Novo paciente</a>
-        </div>
-    </div> <!-- /#top -->
+    <section class="container">
+        <div id="top" class="row">
+            <div class="col-md-12">
+                <h2>Pacientes</h2>
+                <label for="filtrar-tabela">Pesquisar:</label>
+                <input type="text" name="filtro" id="filtrar-tabela" placeholder="Nome do paciente">
+                <a href="{{ route ('pacientes.create')}}" class="btn btn-primary pull-right h2" style="margin-bottom:4px; margin-top: 2px;">Novo paciente</a>
+            </div>
+        </div> <!-- /#top -->
         <table>
             <thead>
                 <tr>
@@ -29,9 +30,21 @@
                         <td class="info-peso"></td>
                         <td class="info-altura"></td>
                         <td class="info-gordura"></td>
-                        <td class="info-imc">0</td>
+                        <td class="info-imc"></td>
                         <td class="info-situacao">0</td>
-                        <td><a href=""><i class="fas fa-edit"></i></a>&ensp;<a href=""><i class="fa fa-trash"></i></a></td>
+                        <td><a href="{{ route ('pacientes.edit', $p['id']) }}"><i class="fas fa-edit"></i></a>&ensp;
+                            <a href="#"><i class="fas fa-trash" data-toggle="modal" data-target="#modal-{{$p['id']}}"/></i></a></td>
+                        @component('components.modal',['id'=>$p['id'],'modalTitle'=>'Confirmar exclusão'])
+                        <div class="modal-body">
+                        <form name="formExcluir" method="POST" action="{{ route ('pacientes.destroy', $p['id']) }}">
+                            Deseja excluir o paciente <b>{{ $p['nome'] }}</b>?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Excluir</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        </div>
+                        </form>
+                        @endcomponent
                     </tr>
                 @endforeach
 
