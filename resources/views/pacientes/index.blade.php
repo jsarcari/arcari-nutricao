@@ -1,4 +1,4 @@
-@extends('layouts.principal')
+@extends('layouts.principal', ["current" => "pacientes"])
 
 @section('titulo','Pacientes')
 @section('conteudo')

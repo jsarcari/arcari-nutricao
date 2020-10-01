@@ -13,12 +13,8 @@
 	</head>
 	<body>
         <header>
-			<div class="container">
-				<h1 class="titulo"><a href="{{ route ('pacientes.index') }}">Arcari Nutrição</a></h1>
-				<button type="button" class="btn btn-default pull-right" aria-label="Right Align" style=" margin-top:3px;">
-				  <span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Estatísticas
-				</button>
-			</div>
+			@component('components.navbar', ["current" => $current])
+            @endcomponent
         </header>
         <main class="principal">
             @yield('conteudo')

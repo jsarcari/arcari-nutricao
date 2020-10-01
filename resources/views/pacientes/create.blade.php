@@ -1,4 +1,4 @@
-@extends('layouts.principal')
+@extends('layouts.principal', ["current" => "pacientes"])
 
 @section('titulo','Cadastro de pacientes')
 @section('conteudo')
@@ -17,13 +17,18 @@
             <input type="text" class="form-control" id="nascimentoPaciente" placeholder="__/__/____">
         </div>
         </div>
-        <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="sexoPaciente" name="sexoPaciente" class="custom-control-input">
-            <label class="custom-control-label" for="sexoPaciente">Masculino</label>
+        <div class="form-group row">
+            <label for="sexoPaciente" class="col-sm-2 col-form-label">Sexo</label>
+        <div class="col-sm-10">
+            <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="M" name="sexoPaciente" class="custom-control-input" value="M"> 
+            <label class="custom-control-label" for="M">Masculino</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="F" name="sexoPaciente" class="custom-control-input" value="F"> 
+            <label class="custom-control-label" for="F">Feminino</label>
+            </div>
         </div>
-        <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="sexoPaciente" name="sexoPaciente" class="custom-control-input">
-            <label class="custom-control-label" for="sexoPaciente">Feminino</label>
         </div>
         <div class="form-group row">
         <div class="col-sm-10">

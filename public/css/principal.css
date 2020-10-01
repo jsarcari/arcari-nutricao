@@ -25,17 +25,12 @@ header h2{
 	vertical-align:	middle;
 }
 
-header .container:before{
+header .navbar:before{
 	content: '';
 	display:inline-block;
-	height: 100%;
-	vertical-align:	middle;
-}
-
-.container{
-	width: 70%;
     height: 100%;
     margin: 0 auto;
+	vertical-align:	middle;
 }
 
 .principal{
