@@ -9,13 +9,13 @@
         <div class="form-group row">
         <label for="nomePaciente" class="col-sm-2 col-form-label">Nome</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="nomePaciente" maxlength="60" placeholder="Nome do paciente">
+            <input type="text" class="form-control" id="nomePaciente" name="nomePaciente" maxlength="60" placeholder="Nome do paciente">
         </div>
         </div>
         <div class="form-group row">
         <label for="nascimentoPaciente" class="col-sm-2 col-form-label">Data de nascimento</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="nascimentoPaciente" placeholder="__/__/____">
+            <input type="text" class="form-control" id="nascimentoPaciente" name="nascimentoPaciente" placeholder="__/__/____">
         </div>
         </div>
         <div class="form-group row">

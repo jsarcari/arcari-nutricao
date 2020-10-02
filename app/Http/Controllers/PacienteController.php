@@ -14,7 +14,8 @@ class PacienteController extends Controller
      */
     public function index()
     {
-        return view('pacientes.index');
+        $pacientes = Paciente::all();
+        return view('pacientes.index', compact('pacientes'));
     }
 
     /**
@@ -38,7 +39,7 @@ class PacienteController extends Controller
         $paciente = new Paciente();
         $paciente->nomePaciente = $request->input('nomePaciente');
         $paciente->sexoPaciente = $request->input('sexoPaciente');
-        $paciente->nascimentoPaciente = $request->input('nascimentoPaciente');
+        $paciente->nascimentoPaciente = $this->converteData($request->input('nascimentoPaciente'));
         $paciente->save();
         return redirect()->route('pacientes.index');
     }
@@ -86,5 +87,12 @@ class PacienteController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function converteData($nascimentoPaciente){
+
+        $nascimentoPaciente = "$nascimentoPaciente[6]"."$nascimentoPaciente[7]"."$nascimentoPaciente[8]"."$nascimentoPaciente[9]"."-"."$nascimentoPaciente[3]"."$nascimentoPaciente[4]"."-"."$nascimentoPaciente[0]"."$nascimentoPaciente[1]";
+    
+        return $nascimentoPaciente;
     }
 }
