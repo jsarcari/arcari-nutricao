@@ -7,9 +7,6 @@ use App\Paciente;
 
 class PacienteController extends Controller
 {
-    private $pacientes = [
-        ['id'=>1, 'nome'=>'Juan']
-    ];
     /**
      * Display a listing of the resource.
      *
@@ -17,8 +14,7 @@ class PacienteController extends Controller
      */
     public function index()
     {
-        $pacientes = $this->pacientes;
-        return view('pacientes.index', compact(['pacientes']));
+        return view('pacientes.index');
     }
 
     /**
@@ -40,6 +36,11 @@ class PacienteController extends Controller
     public function store(Request $request)
     {
         $paciente = new Paciente();
+        $paciente->nomePaciente = $request->input('nomePaciente');
+        $paciente->sexoPaciente = $request->input('sexoPaciente');
+        $paciente->nascimentoPaciente = $request->input('nascimentoPaciente');
+        $paciente->save();
+        return redirect()->route('pacientes.index');
     }
 
     /**
