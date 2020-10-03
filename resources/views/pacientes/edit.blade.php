@@ -5,14 +5,16 @@
     @component('components.top',['titulo'=>'Editar paciente'])
     @endcomponent
     <script type="text/javascript" src="{{ asset('js/mascaraData.js') }}"></script>
-    <form action="/pacientes/edit/{{$paciente->id}}" method="POST">
+    <form name="form" action="/pacientes/edit/{{$paciente->id}}" method="POST" onsubmit="return validar();">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <div id="nomeRequired" class="imprimirAlerta"></div>
         <div class="form-group row">
         <label for="nomePaciente" class="col-sm-2 col-form-label">Nome</label>
         <div class="col-sm-10">
             <input type="text" class="form-control" id="nomePaciente" name="nomePaciente" value="{{$paciente->nomePaciente}}" maxlength="60" placeholder="Nome do paciente">
         </div>
         </div>
+        <div id="nascimentoRequired" class="imprimirAlerta"></div>
         <div class="form-group row">
         <label for="nascimentoPaciente" class="col-sm-2 col-form-label">Data de nascimento</label>
         <div class="col-sm-10">
@@ -39,4 +41,6 @@
         </div>
         </div>
     </form>
+    <script src="{{ asset('js/jquery.js') }}"></script>
+    <script src="{{ asset('js/validaFormPaciente.js') }}"></script>
 @endsection
