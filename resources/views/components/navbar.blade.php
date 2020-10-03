@@ -9,8 +9,8 @@
         <li @if($current=="pacientes") class="nav-item active" @else class="nav-item" @endif>
           <a class="nav-link" href="{{ route ('pacientes.index') }}">Pacientes</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Consultas</a>
+        <li @if($current=="consultas") class="nav-item active" @else class="nav-item" @endif>
+          <a class="nav-link" href="{{ route ('consultas.index') }}">Consultas</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">Estatísticas</a>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Consulta;
+use App\Paciente;
 
 class ConsultaController extends Controller
 {
@@ -13,7 +15,8 @@ class ConsultaController extends Controller
      */
     public function index()
     {
-        //
+        $consultas = Consulta::all();
+        return view('consultas.index', compact('consultas'));
     }
 
     /**
@@ -23,7 +26,8 @@ class ConsultaController extends Controller
      */
     public function create()
     {
-        //
+        $pacientes = Paciente::all();
+        return view('consultas.create', compact('pacientes'));
     }
 
     /**
@@ -56,7 +60,11 @@ class ConsultaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $consulta = Consulta::find($id);
+        if (isset($consulta)) {
+            return view('consultas.edit', compact('consulta'));
+        }
+        return redirect('/consultas');
     }
 
     /**
