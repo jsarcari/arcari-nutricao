@@ -15,3 +15,5 @@ Route::get('/', 'PacienteController@index');
 
 Route::resource('/pacientes', 'PacienteController');
 Route::resource('/consultas', 'ConsultaController');
+Route::post('/pacientes/delete/{paciente}', 'PacienteController@destroy');
+Route::post('/pacientes/edit/{paciente}', 'PacienteController@update');

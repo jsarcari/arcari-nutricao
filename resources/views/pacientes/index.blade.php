@@ -34,7 +34,8 @@
                             <a href="#"><i class="fas fa-trash" data-toggle="modal" data-target="#modal-{{$p['id']}}"/></i></a></td>
                         @component('components.modal',['id'=>$p['id'],'modalTitle'=>'Confirmar exclusão'])
                         <div class="modal-body">
-                        <form name="formExcluir" method="POST" action="{{ route ('pacientes.destroy', $p['id']) }}">
+                        <form name="formExcluir" method="POST" action="pacientes/delete/{{$p['id']}}">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             Deseja excluir o paciente <b>{{ $p['nomePaciente'] }}</b>?
                         </div>
                         <div class="modal-footer">

@@ -63,7 +63,11 @@ class PacienteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $paciente = Paciente::find($id);
+        if (isset($paciente)) {
+            return view('pacientes.edit', compact('paciente'));
+        }
+        return redirect('/pacientes');
     }
 
     /**
@@ -75,7 +79,14 @@ class PacienteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $paciente = Paciente::find($id);
+        if (isset($paciente)) {
+            $paciente->nomePaciente = $request->input('nomePaciente');
+            $paciente->sexoPaciente = $request->input('sexoPaciente');
+            $paciente->nascimentoPaciente = $this->converteData($request->input('nascimentoPaciente'));
+            $paciente->save();
+        }
+        return redirect('/pacientes');
     }
 
     /**
@@ -86,7 +97,11 @@ class PacienteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $paciente = Paciente::find($id);
+        if (isset($paciente)) {
+            $paciente->delete();
+        }
+        return redirect()->route('pacientes.index');
     }
 
     public function converteData($nascimentoPaciente){
