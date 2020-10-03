@@ -14,7 +14,8 @@ class PacienteController extends Controller
      */
     public function index()
     {
-        $pacientes = Paciente::all();
+        $pacientes = Paciente::orderBy('nomePaciente')->get();
+        //$pacientes = Paciente::all()->orderBy('nomePaciente');
         return view('pacientes.index', compact('pacientes'));
     }
 
