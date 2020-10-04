@@ -15,7 +15,8 @@ class ConsultaController extends Controller
      */
     public function index()
     {
-        $consultas = Consulta::all();
+        $sql = 'SELECT dataConsulta, nomePaciente, pesoPaciente, alturaPaciente, calculaImc(pesoPaciente, alturaPaciente) as imcPaciente FROM pacientes JOIN consultas';
+        $consultas = Consulta::select($sql);
         return view('consultas.index', compact('consultas'));
     }
 
@@ -38,7 +39,14 @@ class ConsultaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $consulta = new Consulta();
+        $consulta->idPaciente = $request->get('idPaciente');
+        $consulta->dataConsulta = $request->input('dataConsulta');
+        $consulta->pesoPaciente = $request->input('pesoPaciente');
+        $consulta->alturaPaciente = $request->input('alturaPaciente');
+        $consulta->gorduraPaciente = $request->input('gorduraPaciente');
+        $consulta->save();
+        return redirect()->route('consultas.index');
     }
 
     /**
@@ -76,7 +84,16 @@ class ConsultaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $consulta = Consulta::find($id);
+        if (isset($consulta)) {
+            $consulta->idPaciente = $request->get('idPaciente');
+            $consulta->dataConsulta = $request->input('dataConsulta');
+            $consulta->pesoPaciente = $request->input('pesoPaciente');
+            $consulta->alturaPaciente = $request->input('alturaPaciente');
+            $consulta->gorduraPaciente = $request->input('gorduraPaciente');
+            $consulta->save();
+        }
+        return redirect('/consultas');
     }
 
     /**
@@ -87,6 +104,17 @@ class ConsultaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $consulta = Consulta::find($id);
+        if (isset($consulta)) {
+            $consulta->delete();
+        }
+        return redirect()->route('consultas.index');
+    }
+
+    public function converteData($dataConsulta){
+
+        $dataConsulta = "$dataConsulta[6]"."$dataConsulta[7]"."$dataConsulta[8]"."$dataConsulta[9]"."-"."$dataConsulta[3]"."$dataConsulta[4]"."-"."$dataConsulta[0]"."$dataConsulta[1]";
+    
+        return $dataConsulta;
     }
 }
