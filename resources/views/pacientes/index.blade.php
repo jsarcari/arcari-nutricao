@@ -12,11 +12,9 @@
                 <tr>
                     <th>Nome</th>
                     <th>Idade</th>
-                    <th>Peso(kg)</th>
-                    <th>Altura(m)</th>
-                    <th>Gordura Corporal(%)</th>
-                    <th>IMC</th>
-                    <th>Situação</th>
+                    <th>Última consulta</th>
+                    <th>IMC atual</th>
+                    <th>Situação atual</th>
                     <th>Ação</th>
                 </tr>
             </thead>
@@ -25,9 +23,7 @@
                     <tr class="paciente" >
                         <td class="info-nome">{{ $p['nomePaciente'] }}</td>
                         <td class="info-nascimento">{{ date_format(date_create($p['nascimentoPaciente']),'d/m/Y') }}</td>
-                        <td class="info-peso"></td>
-                        <td class="info-altura"></td>
-                        <td class="info-gordura"></td>
+                        <td class="info-data"></td>
                         <td class="info-imc"></td>
                         <td class="info-situacao">0</td>
                         <td><a href="{{ route ('pacientes.edit', $p['id']) }}"><i class="fas fa-edit"></i></a>&ensp;
