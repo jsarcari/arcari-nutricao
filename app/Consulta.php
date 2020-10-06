@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Consulta extends Model
 {
-    //
+    protected $fillable = ['idPaciente','dataConsulta','pesoPaciente','alturaPaciente','gorduraPaciente'];
 }

@@ -1,5 +1,5 @@
 @extends('layouts.principal', ["current" => "pacientes"])
-
+@inject('pac', 'App\Http\Controllers\PacienteController')
 @section('titulo','Pacientes')
 @section('conteudo')
         @component('components.top',['titulo'=>'Pacientes'])
@@ -20,11 +20,16 @@
             </thead>
             <tbody id="tabela-pacientes">
                 @foreach ($pacientes as $p)
+                    @php
+                    $consulta = $pac->buscarConsulta($p['id']); 
+                    $imcCalculo = $pac->calculaImc($consulta['pesoPaciente'],$consulta['alturaPaciente']);
+                    $imc = number_format($imcCalculo,2);
+                    @endphp
                     <tr class="paciente" >
                         <td class="info-nome">{{ $p['nomePaciente'] }}</td>
                         <td class="info-nascimento">{{ date_format(date_create($p['nascimentoPaciente']),'d/m/Y') }}</td>
-                        <td class="info-data"></td>
-                        <td class="info-imc"></td>
+                        <td class="info-data">{{ $consulta['dataConsulta'] }}</td>
+                        <td class="info-imc">{{ $imc }}</td>
                         <td class="info-situacao">0</td>
                         <td><a href="{{ route ('pacientes.edit', $p['id']) }}"><i class="fas fa-edit"></i></a>&ensp;
                             <a href="#"><i class="fas fa-trash" data-toggle="modal" data-target="#modal-{{$p['id']}}"/></i></a></td>

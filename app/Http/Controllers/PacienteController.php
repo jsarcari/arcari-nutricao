@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Paciente;
+use App\Consulta;
 
 class PacienteController extends Controller
 {
@@ -110,5 +111,19 @@ class PacienteController extends Controller
         $nascimentoPaciente = "$nascimentoPaciente[6]"."$nascimentoPaciente[7]"."$nascimentoPaciente[8]"."$nascimentoPaciente[9]"."-"."$nascimentoPaciente[3]"."$nascimentoPaciente[4]"."-"."$nascimentoPaciente[0]"."$nascimentoPaciente[1]";
     
         return $nascimentoPaciente;
+    }
+
+    public function buscarConsulta($id) {
+                    
+        $ultimaConsulta = Consulta::where('idPaciente','=',$id)->latest()->first();
+        
+        return $ultimaConsulta;
+    }
+
+    public function calculaImc($peso, $altura) {
+        if($altura!=0)
+            return $peso/pow($altura,2);
+        else
+            return 0;
     }
 }

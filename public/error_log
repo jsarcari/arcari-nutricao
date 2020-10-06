@@ -1,0 +1,9 @@
+[05-Oct-2020 06:17:15 UTC] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 16515072 bytes) in /home/juan/projetos/myApp/app/Http/Controllers/PacienteController.php on line 128
+[05-Oct-2020 06:17:15 UTC] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 16609280 bytes) in /home/juan/projetos/myApp/vendor/symfony/http-foundation/Response.php on line 361
+[05-Oct-2020 06:17:15 UTC] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 16498688 bytes) in Unknown on line 0
+[05-Oct-2020 06:17:18 UTC] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 14696448 bytes) in /home/juan/projetos/myApp/app/Http/Controllers/PacienteController.php on line 128
+[05-Oct-2020 06:17:18 UTC] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 14790656 bytes) in /home/juan/projetos/myApp/vendor/symfony/http-foundation/Response.php on line 361
+[05-Oct-2020 06:17:34 UTC] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 23085056 bytes) in /home/juan/projetos/myApp/app/Http/Controllers/PacienteController.php on line 128
+[05-Oct-2020 06:17:34 UTC] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 23179264 bytes) in /home/juan/projetos/myApp/vendor/symfony/http-foundation/Response.php on line 361
+[05-Oct-2020 06:17:34 UTC] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 23068672 bytes) in Unknown on line 0
+[05-Oct-2020 08:02:49 UTC] PHP Fatal error:  Cannot use [] for reading in /home/juan/projetos/myApp/storage/framework/views/bf1ed8101c7b1c48c59b7ea33dee5b668eda5afd.php on line 28

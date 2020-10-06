@@ -15,8 +15,7 @@ class ConsultaController extends Controller
      */
     public function index()
     {
-        $sql = 'SELECT dataConsulta, nomePaciente, pesoPaciente, alturaPaciente, calculaImc(pesoPaciente, alturaPaciente) as imcPaciente FROM pacientes JOIN consultas';
-        $consultas = Consulta::select($sql);
+        $consultas = Consulta::join('pacientes', 'consultas.idPaciente', '=', 'pacientes.id')->select('consultas.*','pacientes.nomePaciente')->orderBy('created_at','desc')->get();
         return view('consultas.index', compact('consultas'));
     }
 
