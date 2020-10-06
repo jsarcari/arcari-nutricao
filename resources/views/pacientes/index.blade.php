@@ -5,7 +5,8 @@
         @component('components.top',['titulo'=>'Pacientes'])
         <label for="filtrar-tabela">Pesquisar:</label>
         <input type="text" name="filtro" id="filtrar-tabela" placeholder="Nome do paciente">
-        <a href="{{ route ('pacientes.create')}}" class="btn btn-primary pull-right h2" style="margin-bottom:4px; margin-top: 2px;">Novo paciente</a>
+        <a href="{{ route ('pacientes.create')}}" class="btn btn-success pull-right h2" style="margin-bottom:4px; margin-top: 2px;">Estatísticas</a>
+        <a href="{{ route ('pacientes.estatisticas')}}" class="btn btn-primary pull-right h2" style="margin-bottom:4px; margin-top: 2px;">Novo paciente</a>
         @endcomponent
         <table>
             <thead>
@@ -28,9 +29,9 @@
                     <tr class="paciente" >
                         <td class="info-nome">{{ $p['nomePaciente'] }}</td>
                         <td class="info-nascimento">{{ date_format(date_create($p['nascimentoPaciente']),'d/m/Y') }}</td>
-                        <td class="info-data">{{ $consulta['dataConsulta'] }}</td>
-                        <td class="info-imc">{{ $imc }}</td>
-                        <td class="info-situacao">0</td>
+                        <td class="info-data">@if($consulta['dataConsulta']!='') {{ date_format(date_create($consulta['dataConsulta']),'d/m/Y') }}@endif</td>
+                        <td class="info-imc">@if($imc!=0) {{ $imc }} @endif</td>
+                        <td class="info-situacao"></td>
                         <td><a href="{{ route ('pacientes.edit', $p['id']) }}"><i class="fas fa-edit"></i></a>&ensp;
                             <a href="#"><i class="fas fa-trash" data-toggle="modal" data-target="#modal-{{$p['id']}}"/></i></a></td>
                         @component('components.modal',['id'=>$p['id'],'modalTitle'=>'Confirmar exclusão'])
@@ -52,4 +53,5 @@
         </table>
     <script type="text/javascript" src="{{ asset('js/filtro.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/calcula-idade.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/validaImc.js') }}"></script>
 @endsection

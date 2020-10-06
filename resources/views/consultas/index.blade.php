@@ -16,7 +16,6 @@
                 <th>Altura(m)</th>
                 <th>Gordura Corporal(%)</th>
                 <th>IMC</th>
-                <th>Situação</th>
                 <th>Ação</th>
             </tr>
         </thead>
@@ -33,7 +32,6 @@
                     <td class="info-altura">{{ $c['alturaPaciente'] }}</td>
                     <td class="info-gordura">{{ $c['gorduraPaciente'] }}</td>
                     <td class="info-imc">{{ $imc }}</td>
-                    <td class="info-situacao">0</td>
                     <td><a href="{{ route ('consultas.edit', $c['id']) }}"><i class="fas fa-edit"></i></a>&ensp;
                         <a href="#"><i class="fas fa-trash" data-toggle="modal" data-target="#modal-{{$c['id']}}"/></i></a></td>
                     @component('components.modal',['id'=>$c['id'],'modalTitle'=>'Confirmar exclusão'])
