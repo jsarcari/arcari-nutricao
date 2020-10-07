@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'PacienteController@index');
+Route::get('/estatisticas', 'PacienteController@calculaEstatisticas')->name('pacientes.estatisticas');
 
 // Rotas para pacientes:
 Route::resource('/pacientes', 'PacienteController');

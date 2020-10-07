@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Paciente;
 use App\Consulta;
 
@@ -15,7 +16,7 @@ class PacienteController extends Controller
      */
     public function index()
     {
-        $pacientes = Paciente::orderBy('nomePaciente')->get();
+        $pacientes = Paciente::orderBy('created_at','desc')->get();
         //$pacientes = Paciente::all()->orderBy('nomePaciente');
         return view('pacientes.index', compact('pacientes'));
     }
@@ -118,6 +119,56 @@ class PacienteController extends Controller
         $ultimaConsulta = Consulta::where('idPaciente','=',$id)->latest()->first();
         
         return $ultimaConsulta;
+    }
+
+    public function contarSituacao($situacao) {
+        $cont = 0;
+        $subquery = Consulta::join('pacientes', 'consultas.idPaciente', '=', 'pacientes.id')->select(DB::raw('MAX(consultas."created_at")'))->groupBy('pacientes.nomePaciente')->get();
+        $consultas = Consulta::whereIn('consultas.created_at', $subquery)->get();
+        $total = $consultas->count();
+        foreach ($consultas as $consulta) {
+            switch($situacao) {
+                case 1:
+                    if($this->calculaImc($consulta['pesoPaciente'],$consulta['alturaPaciente'])<18.5)
+                        $cont++;
+                    break;
+                case 2:
+                    if($this->calculaImc($consulta['pesoPaciente'],$consulta['alturaPaciente'])>=18.5 && $this->calculaImc($consulta['pesoPaciente'],$consulta['alturaPaciente'])<25)
+                        $cont++;
+                    break;
+                case 3:
+                    if($this->calculaImc($consulta['pesoPaciente'],$consulta['alturaPaciente'])>=25 && $this->calculaImc($consulta['pesoPaciente'],$consulta['alturaPaciente'])<30)
+                        $cont++;
+                    break;
+                case 4:
+                    if($this->calculaImc($consulta['pesoPaciente'],$consulta['alturaPaciente'])>=30 && $this->calculaImc($consulta['pesoPaciente'],$consulta['alturaPaciente'])<40)
+                        $cont++;
+                    break;
+                case 5:
+                    if($this->calculaImc($consulta['pesoPaciente'],$consulta['alturaPaciente'])>=40)
+                        $cont++;
+                    break;
+                case 6:
+                    /*total =>  SELECT COUNT(DISTINCT consultas."idPaciente")
+                    FROM pacientes INNER JOIN consultas ON pacientes."id" = consultas."idPaciente" */
+                    $cont = $total;
+                default:
+                    break;
+            }
+        }
+        return $cont;
+    }
+
+    public function calculaEstatisticas() {
+        $array = array();
+        $array['abaixoPeso'] = $this->contarSituacao(1);
+        $array['pesoNormal'] = $this->contarSituacao(2);
+        $array['sobrepeso'] = $this->contarSituacao(3);
+        $array['obesidade'] = $this->contarSituacao(4);
+        $array['obesidadeMorbida'] = $this->contarSituacao(5);
+        $array['total'] = $this->contarSituacao(6);
+        
+        return view('others.estatisticas',compact('array'));
     }
 
     public function calculaImc($peso, $altura) {

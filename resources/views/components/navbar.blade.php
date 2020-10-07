@@ -12,8 +12,8 @@
         <li @if($current=="consultas") class="nav-item active" @else class="nav-item" @endif>
           <a class="nav-link" href="{{ route ('consultas.index') }}">Consultas</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Estatísticas</a>
+        <li @if($current=="estatisticas") class="nav-item active" @else class="nav-item" @endif>
+            <a class="nav-link" href="{{ route ('pacientes.estatisticas') }}">Estatísticas</a>
         </li>
       </ul>
     </div>

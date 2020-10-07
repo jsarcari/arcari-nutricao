@@ -5,8 +5,7 @@
         @component('components.top',['titulo'=>'Pacientes'])
         <label for="filtrar-tabela">Pesquisar:</label>
         <input type="text" name="filtro" id="filtrar-tabela" placeholder="Nome do paciente">
-        <a href="{{ route ('pacientes.create')}}" class="btn btn-success pull-right h2" style="margin-bottom:4px; margin-top: 2px;">Estatísticas</a>
-        <a href="{{ route ('pacientes.estatisticas')}}" class="btn btn-primary pull-right h2" style="margin-bottom:4px; margin-top: 2px;">Novo paciente</a>
+        <a href="{{ route ('pacientes.create')}}" class="btn btn-primary pull-right h2" style="margin-bottom:4px; margin-top: 2px;">Novo paciente</a>
         @endcomponent
         <table>
             <thead>
