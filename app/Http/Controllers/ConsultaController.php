@@ -68,8 +68,9 @@ class ConsultaController extends Controller
     public function edit($id)
     {
         $consulta = Consulta::find($id);
+        $pacientes = Paciente::all();
         if (isset($consulta)) {
-            return view('consultas.edit', compact('consulta'));
+            return view('consultas.edit', compact('consulta','pacientes'));
         }
         return redirect('/consultas');
     }
