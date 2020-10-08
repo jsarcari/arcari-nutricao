@@ -11,11 +11,11 @@
             <thead>
                 <tr>
                     <th>Nome</th>
-                    <th>Idade</th>
-                    <th>Última consulta</th>
-                    <th>IMC atual</th>
-                    <th>Situação atual</th>
-                    <th>Ação</th>
+                    <th style="width: 80px;">Idade</th>
+                    <th style="width: 125px;">Última consulta</th>
+                    <th style="width: 90px;">IMC atual</th>
+                    <th style="width: 140px;">Situação atual</th>
+                    <th style="width: 140px;">Ação</th>
                 </tr>
             </thead>
             <tbody id="tabela-pacientes">
@@ -31,8 +31,11 @@
                         <td class="info-data">@if($consulta['dataConsulta']!='') {{ date_format(date_create($consulta['dataConsulta']),'d/m/Y') }}@endif</td>
                         <td class="info-imc">@if($imc!=0) {{ $imc }} @endif</td>
                         <td class="info-situacao"></td>
-                        <td><a href="{{ route ('pacientes.edit', $p['id']) }}"><i class="fas fa-edit"></i></a>&ensp;
-                            <a href="#"><i class="fas fa-trash" data-toggle="modal" data-target="#modal-{{$p['id']}}"/></i></a></td>
+                        <td><i class="fas fa-file-medical-alt"></i>&ensp;
+                            <a href="{{ route ('pacientes.edit', $p['id']) }}"><i class="fas fa-edit" title="Editar paciente"></i></a>&ensp;
+                            <a href="#"><i class="fas fa-trash" title="Excluir paciente" data-toggle="modal" data-target="#modal-{{$p['id']}}"/></i></a>&ensp;
+                            <a href="#"><i class="fas fa-file-medical" title="Nova consulta"></i></a>
+                        </td>
                         @component('components.modal',['id'=>$p['id'],'modalTitle'=>'Confirmar exclusão'])
                         <div class="modal-body">
                         <form name="formExcluir" method="POST" action="pacientes/delete/{{$p['id']}}">

@@ -10,13 +10,13 @@
     <table>
         <thead>
             <tr>
-                <th>Data</th>
+                <th style="width: 100px;">Data</th>
                 <th>Paciente</th>
-                <th>Peso(kg)</th>
-                <th>Altura(m)</th>
-                <th>Gordura Corporal(%)</th>
-                <th>IMC</th>
-                <th>Ação</th>
+                <th style="width: 80px;">Peso(kg)</th>
+                <th style="width: 80px;">Altura(m)</th>
+                <th style="width: 110px;">Gordura Corporal(%)</th>
+                <th style="width: 75px;">IMC</th>
+                <th style="width: 110px;">Ação</th>
             </tr>
         </thead>
         <tbody id="tabela-consultas">
@@ -32,8 +32,8 @@
                     <td class="info-altura">{{ $c['alturaPaciente'] }}</td>
                     <td class="info-gordura">{{ $c['gorduraPaciente'] }}</td>
                     <td class="info-imc">{{ $imc }}</td>
-                    <td><a href="{{ route ('consultas.edit', $c['id']) }}"><i class="fas fa-edit"></i></a>&ensp;
-                        <a href="#"><i class="fas fa-trash" data-toggle="modal" data-target="#modal-{{$c['id']}}"/></i></a></td>
+                    <td><a href="{{ route ('consultas.edit', $c['id']) }}"><i class="fas fa-edit" title="Editar consulta"></i></a>&ensp;
+                        <a href="#"><i class="fas fa-trash" title="Excluir consulta" data-toggle="modal" data-target="#modal-{{$c['id']}}"/></i></a></td>
                     @component('components.modal',['id'=>$c['id'],'modalTitle'=>'Confirmar exclusão'])
                     <div class="modal-body">
                     <form name="formExcluir" method="POST" action="consultas/delete/{{$c['id']}}">

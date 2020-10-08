@@ -5,7 +5,7 @@ for (var i=0; i<pacientes.length; i++) {
     var nascimento = tdNascimento.textContent;
         
     var idade = calculaIdade(nascimento);
-    tdNascimento.textContent = idade + " anos";
+    tdNascimento.textContent = idade;
 }
 
 function calculaIdade(nascimento) {
