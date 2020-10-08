@@ -36,7 +36,7 @@
         </div>
         <div class="form-group row">
         <div class="col-sm-10">
-            <button type="submit" class="btn btn-primary">Cadastrar</button>
+            <button type="submit" class="btn btn-primary">Editar</button>
             <a href="{{ route ('pacientes.index') }}"><button type="button" class="btn btn-danger">Cancelar</button></a>
         </div>
         </div>
