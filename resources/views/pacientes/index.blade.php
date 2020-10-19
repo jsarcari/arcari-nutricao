@@ -14,7 +14,7 @@
                     <th style="width: 80px;">Idade</th>
                     <th style="width: 125px;">Última consulta</th>
                     <th style="width: 90px;">IMC atual</th>
-                    <th style="width: 140px;">Situação atual</th>
+                    <th style="width: 145px;">Situação atual</th>
                     <th style="width: 140px;">Ação</th>
                 </tr>
             </thead>
@@ -34,7 +34,7 @@
                         <td><i class="fas fa-file-medical-alt"></i>&ensp;
                             <a href="{{ route ('pacientes.edit', $p['id']) }}"><i class="fas fa-edit" title="Editar paciente"></i></a>&ensp;
                             <a href="#"><i class="fas fa-trash" title="Excluir paciente" data-toggle="modal" data-target="#modal-{{$p['id']}}"/></i></a>&ensp;
-                            <a href="#"><i class="fas fa-file-medical" title="Nova consulta"></i></a>
+                            <a href="{{ route ('consultas.create', $p['id']) }}"><i class="fas fa-file-medical" title="Nova consulta"></i></a>
                         </td>
                         @component('components.modal',['id'=>$p['id'],'modalTitle'=>'Confirmar exclusão'])
                         <div class="modal-body">

@@ -1,5 +1,5 @@
-var tela = document.querySelector('canvas');
-var pincel = tela.getContext('2d');
+var graficoSituacao = document.querySelector("#situacao-total");
+var pincel = graficoSituacao.getContext('2d');
 
 function desenhaRetangulo(x, y, altura, largura, cor){
     pincel.fillStyle = cor;
@@ -19,59 +19,69 @@ function desenhaBarra(x,y,altura,cor,texto,porcentagem){
     desenhaTexto(porcentagem+"%",x,y-10);
 }
 
-desenhaTexto('Gráfico da situação atual do peso dos pacientes:',50,40);
-pincel.fillStyle='white';
-pincel.beginPath(); // iniciar a escrita do caminho
-pincel.fillRect(50, 50, 500, 300);
-pincel.fillStyle='white';
-pincel.fillRect(50, 50, 500, 300);
-pincel.closePath();
+function desenhaEixos() {
+    pincel.strokeStyle='black';
 
-var porc = 10;
+    desenhaTexto('%',30,65);
 
-for(var i=0; i<10; i++) {
-	pincel.beginPath();
-	pincel.strokeStyle='#CCCCCC';
-	pincel.lineTo(50,350-porc*2.75);
-	pincel.lineTo(550,350-porc*2.75);
-	pincel.stroke();
-	pincel.closePath();
-	porc+=10;
+    pincel.beginPath();
+    pincel.strokeStyle='black';
+    pincel.lineTo(50,350);
+    pincel.lineTo(50,50);
+    pincel.stroke();
+    pincel.closePath();
+
+    pincel.beginPath();
+    pincel.strokeStyle='black';
+    pincel.lineTo(50,350);
+    pincel.lineTo(570,350);
+    pincel.stroke();
+    pincel.closePath();
+
+    pincel.fillStyle = 'black';
+    pincel.beginPath(); // iniciar a escrita do caminho
+    pincel.moveTo(50,50); // mover pincel para o ponto inicial do retângulo
+    pincel.lineTo(45,60); // criar linha até a posição (45,60)
+    pincel.lineTo(55,60); // criar linha até a posição (55,60)
+    pincel.fill(); // preencher o triângulo formado pelas linhas
+    pincel.closePath();
+
+    pincel.fillStyle = 'black';
+    pincel.beginPath();
+    pincel.moveTo(570,350);
+    pincel.lineTo(560,345);
+    pincel.lineTo(560,355);
+    pincel.fill();
+    pincel.closePath();
 }
 
-pincel.strokeStyle='black';
+function desenhaTitulo(titulo) {
+    desenhaTexto(titulo,50,40);
+    pincel.fillStyle='white';
+    pincel.beginPath(); // iniciar a escrita do caminho
+    pincel.fillRect(50, 50, 500, 300);
+    pincel.fillStyle='white';
+    pincel.fillRect(50, 50, 500, 300);
+    pincel.closePath();
+}
 
-desenhaTexto('%',30,65);
+function desenhaLinhas() {
+    var porc = 10;
 
-pincel.beginPath();
-pincel.strokeStyle='black';
-pincel.lineTo(50,350);
-pincel.lineTo(50,50);
-pincel.stroke();
-pincel.closePath();
+    for(var i=0; i<10; i++) {
+        pincel.beginPath();
+        pincel.strokeStyle='#CCCCCC';
+        pincel.lineTo(50,350-porc*2.75);
+        pincel.lineTo(550,350-porc*2.75);
+        pincel.stroke();
+        pincel.closePath();
+        porc+=10;
+    }
+}
 
-pincel.beginPath();
-pincel.strokeStyle='black';
-pincel.lineTo(50,350);
-pincel.lineTo(570,350);
-pincel.stroke();
-pincel.closePath();
-
-pincel.fillStyle = 'black';
-pincel.beginPath(); // iniciar a escrita do caminho
-pincel.moveTo(50,50); // mover pincel para o ponto inicial do retângulo
-pincel.lineTo(45,60); // criar linha até a posição (45,60)
-pincel.lineTo(55,60); // criar linha até a posição (55,60)
-pincel.fill(); // preencher o triângulo formado pelas linhas
-pincel.closePath();
-
-pincel.fillStyle = 'black';
-pincel.beginPath();
-pincel.moveTo(570,350);
-pincel.lineTo(560,345);
-pincel.lineTo(560,355);
-pincel.fill();
-pincel.closePath();
+desenhaTitulo('Gráfico da situação atual do peso dos pacientes:');
+desenhaLinhas();
+desenhaEixos();
 
 var abaixo = document.querySelector('#abaixo-peso');
 var alturaAbaixo = abaixo.textContent;
@@ -103,3 +113,11 @@ var porcentagemMorbida = parseFloat(alturaMorbida).toFixed(1);
 alturaMorbida *= 2.75;
 desenhaBarra(475,350-alturaMorbida,alturaMorbida,'coral','Mórbida',porcentagemMorbida);
 
+// GRÁFICO DE PACIENTES COM PESO NORMAL:
+
+var graficoPesoNormal = document.querySelector("#grafico-peso-normal");
+var pincel = graficoPesoNormal.getContext('2d');
+
+desenhaTitulo('Gráfico de pacientes com peso normal:');
+desenhaLinhas();
+desenhaEixos();

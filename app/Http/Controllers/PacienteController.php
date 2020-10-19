@@ -149,8 +149,6 @@ class PacienteController extends Controller
                         $cont++;
                     break;
                 case 6:
-                    /*total =>  SELECT COUNT(DISTINCT consultas."idPaciente")
-                    FROM pacientes INNER JOIN consultas ON pacientes."id" = consultas."idPaciente" */
                     $cont = $total;
                 default:
                     break;

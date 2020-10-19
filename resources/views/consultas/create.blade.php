@@ -12,9 +12,9 @@
         <label for="idPaciente" class="col-sm-2 col-form-label">Paciente</label>
         <div class="col-sm-10">
             <select class="custom-select" id="idPaciente" name="idPaciente">
-                <option selected value="">Selecione o paciente</option>
+                @if(!isset($idPaciente)) <option selected value="">Selecione o paciente</option> @endif
                 @foreach ($pacientes as $p)
-                    <option value="{{$p['id']}}">{{$p['nomePaciente']}}</option>
+                    <option @if($idPaciente==$p['id']) selected @endif value="{{$p['id']}}">{{$p['nomePaciente']}}</option>
                 @endforeach
             </select>
         </div>

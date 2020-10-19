@@ -9,7 +9,10 @@
 	<p style="display: none;">Sobrepeso: <span id="sobrepeso">{{($array['sobrepeso']*100)/$array['total']}}</span></p>
 	<p style="display: none;">Obesidade: <span id="obesidade">{{($array['obesidade']*100)/$array['total']}}</span></p>
 	<p style="display: none;">Obesidade mórbida: <span id="morbida">{{($array['obesidadeMorbida']*100)/$array['total']}}</span></p>
-	<canvas width="600" height="400" style="margin-left: 15%;"></canvas>
+    @component('components.canvas',['id'=>'situacao-total'])
+    @endcomponent
+    @component('components.canvas',['id'=>'grafico-peso-normal'])
+    @endcomponent
     <script src="{{ asset('js/jquery.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/estatisticas.js') }}"></script>
 @endsection

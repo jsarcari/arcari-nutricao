@@ -24,10 +24,10 @@ class ConsultaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($idPaciente=null)
     {
         $pacientes = Paciente::all();
-        return view('consultas.create', compact('pacientes'));
+        return view('consultas.create', compact('pacientes','idPaciente'));
     }
 
     /**
