@@ -6,9 +6,10 @@ Sou Juan dos Santos Arcari, estudante de Ciência da Computação e criador dest
 
 - Cálculo do IMC dos pacientes através do peso e altura.
 - Controle da porcentagem dos pacientes que estão abaixo do peso, peso normal e acima do peso, através de gráficos.
-- [Modelo Entidade-Relacionamento](https://github.com/jsarcari/arcari-nutricao/blob/main/modeloER.png)
 
 Aplicação simples e intuitiva, com fins didáticos.
+
+[Modelo Entidade-Relacionamento](https://github.com/jsarcari/arcari-nutricao/blob/main/modeloER.png)
 
 ## Dependências
 
