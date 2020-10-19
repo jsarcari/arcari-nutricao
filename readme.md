@@ -1,4 +1,4 @@
-<p align="center">Arcari Nutrição</p>
+# Arcari Nutrição
 
 ## Sobre o software
 
