@@ -102,6 +102,7 @@ class PacienteController extends Controller
     {
         $paciente = Paciente::find($id);
         if (isset($paciente)) {
+            Consulta::where('idPaciente','=',$id)->delete();
             $paciente->delete();
         }
         return redirect()->route('pacientes.index');

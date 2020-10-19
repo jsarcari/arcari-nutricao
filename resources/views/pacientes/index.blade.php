@@ -7,6 +7,9 @@
         <input type="text" name="filtro" id="filtrar-tabela" placeholder="Nome do paciente">
         <a href="{{ route ('pacientes.create')}}" class="btn btn-primary pull-right h2" style="margin-bottom:4px; margin-top: 2px;">Novo paciente</a>
         @endcomponent
+        @if(isset($alerta))
+            <div class="imprimirAlerta">{{ $alerta }}</div>
+        @endif
         <table>
             <thead>
                 <tr>
@@ -40,7 +43,7 @@
                         <div class="modal-body">
                         <form name="formExcluir" method="POST" action="pacientes/delete/{{$p['id']}}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            Deseja excluir o paciente <b>{{ $p['nomePaciente'] }}</b>?
+                            Deseja excluir o paciente <b>{{ $p['nomePaciente'] }}</b> e todas as suas consultas?
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary">Excluir</button>
